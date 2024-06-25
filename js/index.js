@@ -2,8 +2,10 @@ const ROCK = "rock";
 const PAPER = "paper"
 const SCISSORS = "scissors"
 
-let humanScope = 0;
+let humanScore = 0;
 let computerScore = 0;
+
+
 
 function getComputerChoice() {
     switch (Math.floor(Math.random()*3)) {
@@ -15,6 +17,7 @@ function getComputerChoice() {
             return SCISSORS;
     }
 }
+
 
 function getHumanChoice() {
     const input = prompt("rock, paper, scissors?", ROCK);
@@ -31,3 +34,22 @@ function getHumanChoice() {
     }
 }
 
+
+function playRound (humanChoice, computerChoice) {
+    humanChoice = humanChoice.toLowerCase();
+    let message;
+    if (humanChoice === computerChoice) {
+        message = `Tie! ${humanChoice} is as strong as ${computerChoice}!`;
+    } else if (
+        humanChoice === ROCK && computerChoice === PAPER ||
+        humanChoice === PAPER && computerChoice === ROCK ||
+        humanChoice === SCISSORS && computerChoice === PAPER
+    ) {
+        message = `You win! ${humanChoice} beats ${computerChoice}!`;
+        humanScore++;
+    } else {
+        message = `You Lose! ${computerChoice} beats ${humanChoice}!`;
+        computerScore++;
+    }
+    console.log(message);
+}
