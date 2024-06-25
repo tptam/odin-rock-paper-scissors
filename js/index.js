@@ -1,3 +1,5 @@
+playGame();
+
 function playGame() {
     const ROCK = "rock";
     const PAPER = "paper"
