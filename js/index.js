@@ -1,14 +1,29 @@
-// const ROCK = "Rock";
-// const PAPER = "Paper"
-// const SCISSORS = "Scissor"
+// const ROCK = "rock";
+// const PAPER = "paper"
+// const SCISSORS = "scissors"
 
-function getComputerChoice(){
+function getComputerChoice() {
     switch (Math.floor(Math.random()*3)) {
         case 0:
-            return "Rock";
+            return "rock";
         case 1:
-            return "Paper";
+            return "paper";
         case 2:
-            return "Scissors";
+            return "scissors";
+    }
+}
+
+function getHumanChoice() {
+    const input = prompt("rock, paper, scissors?", "rock");
+    switch (input.toLowerCase()) {
+        case "rock":
+            return "rock";
+        case "paper":
+            return "paper";
+        case "scissors":
+            return "scissors";
+        default:
+            // May be changed later
+            return "rock";
     }
 }
