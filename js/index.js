@@ -37,7 +37,7 @@ function playGame() {
 
     // Play 5 times
     for (let i = 0; i < 5; i++) {
-        playRound(getComputerChoice(),getHumanChoice())
+        playRound(getHumanChoice(), getComputerChoice())
     }
 
     // Declare winner;
@@ -53,6 +53,7 @@ function playGame() {
 
     function playRound (humanChoice, computerChoice) {
         humanChoice = humanChoice.toLowerCase();
+        console.log(humanChoice, computerChoice);
         let message;
         if (humanChoice === computerChoice) {
             message = `Tie! ${humanChoice} is as strong as ${computerChoice}!`;
