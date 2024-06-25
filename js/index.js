@@ -2,10 +2,6 @@ const ROCK = "rock";
 const PAPER = "paper"
 const SCISSORS = "scissors"
 
-let humanScore = 0;
-let computerScore = 0;
-
-
 
 function getComputerChoice() {
     switch (Math.floor(Math.random()*3)) {
@@ -35,21 +31,42 @@ function getHumanChoice() {
 }
 
 
-function playRound (humanChoice, computerChoice) {
-    humanChoice = humanChoice.toLowerCase();
-    let message;
-    if (humanChoice === computerChoice) {
-        message = `Tie! ${humanChoice} is as strong as ${computerChoice}!`;
-    } else if (
-        humanChoice === ROCK && computerChoice === PAPER ||
-        humanChoice === PAPER && computerChoice === ROCK ||
-        humanChoice === SCISSORS && computerChoice === PAPER
-    ) {
-        message = `You win! ${humanChoice} beats ${computerChoice}!`;
-        humanScore++;
+function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+
+    // Play 5 times
+    for (let i = 0; i < 5; i++) {
+        playRound(getComputerChoice(),getHumanChoice())
+    }
+
+    // Declare winner;
+    let message = `(You: ${humanScore} vs Computer: ${computerScore})`;
+    if (humanScore === computerScore) {
+        message = "Tie! " + message;
+    } else if (humanScore > computerScore) {
+        message = "Final winner is... YOU!" + message;
     } else {
-        message = `You Lose! ${computerChoice} beats ${humanChoice}!`;
-        computerScore++;
+        message = "Final winner is... Computer!" + message;
     }
     console.log(message);
+
+    function playRound (humanChoice, computerChoice) {
+        humanChoice = humanChoice.toLowerCase();
+        let message;
+        if (humanChoice === computerChoice) {
+            message = `Tie! ${humanChoice} is as strong as ${computerChoice}!`;
+        } else if (
+            humanChoice === ROCK && computerChoice === PAPER ||
+            humanChoice === PAPER && computerChoice === ROCK ||
+            humanChoice === SCISSORS && computerChoice === PAPER
+        ) {
+            message = `You win! ${humanChoice} beats ${computerChoice}!`;
+            humanScore++;
+        } else {
+            message = `You Lose! ${computerChoice} beats ${humanChoice}!`;
+            computerScore++;
+        }
+        console.log(message);
+    }
 }
