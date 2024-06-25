@@ -41,8 +41,12 @@ function playGame() {
     
 
     // Ask player their hand and returns the value
+    // Returns the default value of ROCK when given invalid input
     function getHumanChoice() {
         const input = prompt("rock, paper, scissors?", ROCK);
+        if (input === null) {
+            return ROCK;
+        }
         switch (input.toLowerCase()) {
             case ROCK:
                 return ROCK;
@@ -51,7 +55,6 @@ function playGame() {
             case SCISSORS:
                 return SCISSORS;
             default:
-                // May be changed later
                 return ROCK;
         }
     }
