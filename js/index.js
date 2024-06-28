@@ -86,6 +86,8 @@ function playGame() {
     function playRound (humanChoice, computerChoice) {
 
         const results = document.querySelector("#results");
+        const humanScoreBoard = document.querySelector(".human .score");
+        const computerScoreBoard = document.querySelector(".computer .score");
 
         let message = "";
         // message = `Your hand: ${getPropCase(humanChoice)}\n`;
@@ -109,6 +111,8 @@ function playGame() {
         }
 
         results.textContent = message;
+        humanScoreBoard.textContent = humanScore;
+        computerScoreBoard.textContent = computerScore;
     }
 
 }
