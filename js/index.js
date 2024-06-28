@@ -25,19 +25,21 @@ function playGame() {
         btn.addEventListener("click", (e) => {
             let humanChoice = e.target.id;
             playRound(humanChoice, getComputerChoice());
+            declareWinner();
         });
         humanChoice.appendChild(btn);
     });
 
-    
+
     // Helper Functions
 
     function declareWinner(){
+        if (computerScore < 5 && humanScore < 5) {
+            return;
+        }
         const winner = document.querySelector("#winner");
         let message = "";
-        if (humanScore === computerScore) {
-            message = "Tie! " + message;
-        } else if (humanScore > computerScore) {
+        if (humanScore > computerScore) {
             message = "You win!" + message;
         } else {
             message = "You Lose!" + message;
