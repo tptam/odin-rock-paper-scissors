@@ -28,14 +28,19 @@ function playGame() {
         if (computerScore < 5 && humanScore < 5) {
             return;
         }
-        const winner = document.querySelector("#winner");
+
+        const winner = document.createElement("div");
+        const results = document.querySelector("#results");
+        
         let message = "";
         if (humanScore > computerScore) {
-            message = "You win!" + message;
+            message = `Game End. You Win by ${humanScore}-${computerScore}`;
         } else {
-            message = "You Lose!" + message;
+            message = `Game End. You Lose by ${humanScore}-${computerScore}`;
         }
+
         winner.textContent = message;
+        results.appendChild(winner);
     }
 
 
