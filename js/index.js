@@ -8,28 +8,19 @@ function playGame() {
     let humanScore = 0;
     let computerScore = 0;
 
-    const btnRock = document.createElement("button");
-    btnRock.id = ROCK;
-    btnRock.textContent = getPropCase(ROCK);
-    const btnPaper = document.createElement("button");
-    btnPaper.id = PAPER;
-    btnPaper.textContent = getPropCase(PAPER);
-    const btnScissors = document.createElement("button");
-    btnScissors.id = SCISSORS;
-    btnScissors.textContent = getPropCase(SCISSORS);
-
-    const humanChoiceBtns = [btnRock, btnPaper, btnScissors];
     const humanChoice = document.querySelector("#humanChoice");
 
-    humanChoiceBtns.forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-            let humanChoice = e.target.id;
+    [ROCK, PAPER, SCISSORS].forEach((hand) => {
+        const button = document.createElement("button");
+        button.value = hand;
+        button.textContent = getPropCase(hand);
+        button.addEventListener("click", (e) => {
+            let humanChoice = e.target.value;
             playRound(humanChoice, getComputerChoice());
             declareWinner();
         });
-        humanChoice.appendChild(btn);
+        humanChoice.appendChild(button);
     });
-
 
     // Helper Functions
 
