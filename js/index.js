@@ -85,10 +85,11 @@ function playGame() {
     // Plays one round and disply the result
     function playRound (humanChoice, computerChoice) {
 
-        // let message = `Your hand: ${getPropCase(humanChoice)}\n`;
-        // message += `Computer's hand: ${getPropCase(computerChoice)}\n`
+        const results = document.querySelector("#results");
 
         let message = "";
+        // message = `Your hand: ${getPropCase(humanChoice)}\n`;
+        // message += `Computer's hand: ${getPropCase(computerChoice)}\n`
 
         if (humanChoice === computerChoice) {
             message += "Tie! "
@@ -106,7 +107,8 @@ function playGame() {
             message += `${getPropCase(computerChoice)} beats ${getPropCase(humanChoice)}!`;
             computerScore++;
         }
-        console.log(message);
+
+        results.textContent = message;
     }
 
 }
