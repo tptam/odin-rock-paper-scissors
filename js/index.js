@@ -29,25 +29,22 @@ function playGame() {
         humanChoice.appendChild(btn);
     });
 
-
-
     
-
-
-
-    // Declare winner;
-    let message = `(You: ${humanScore} vs Computer: ${computerScore})`;
-    if (humanScore === computerScore) {
-        message = "Tie! " + message;
-    } else if (humanScore > computerScore) {
-        message = "You win!" + message;
-    } else {
-        message = "You Lose!" + message;
-    }
-    console.log(message);
-
-
     // Helper Functions
+
+    function declareWinner(){
+        const winner = document.querySelector("#winner");
+        let message = "";
+        if (humanScore === computerScore) {
+            message = "Tie! " + message;
+        } else if (humanScore > computerScore) {
+            message = "You win!" + message;
+        } else {
+            message = "You Lose!" + message;
+        }
+        winner.textContent = message;
+    }
+
 
     // Returns a randomly selected hand
     function getComputerChoice() {
